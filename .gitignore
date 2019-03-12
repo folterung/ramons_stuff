@@ -1,0 +1,4 @@
+*.xlsx
+*-data.json
+.vscode
+node_modules
