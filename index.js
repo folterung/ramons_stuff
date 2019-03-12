@@ -91,19 +91,19 @@ function getConsolidatedData(dataset) {
 
     if (!consolidatedData.some(d => d.patientId === current.patientId)) {
       const pre = { 
-        averageGlucose: getAverageGlucose(preDiet),
-        averageInsulin: getAverageInsulin(preDiet)
+        averageGlucose: getAverageGlucose(preDiet) || '',
+        averageInsulin: getAverageInsulin(preDiet) || ''
       };
 
       const post = {
-        averageGlucose: getAverageGlucose(postDiet),
-        averageInsulin: getAverageInsulin(postDiet)
+        averageGlucose: getAverageGlucose(postDiet) || '',
+        averageInsulin: getAverageInsulin(postDiet) || ''
       };
 
       consolidatedData.push({
         patientId: current.patientId,
-        preDiet: { ...preDiet, ...pre, HOMA: getHOMA(pre) },
-        postDiet: { ...postDiet, ...post, HOMA: getHOMA(post) }
+        preDiet: { ...preDiet, ...pre, HOMA: getHOMA(pre) || '' },
+        postDiet: { ...postDiet, ...post, HOMA: getHOMA(post) || '' }
       });
     }
   }
